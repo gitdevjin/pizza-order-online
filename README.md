@@ -1,6 +1,6 @@
 # pizza-order-online
 
-## Business Requirements <br>
+## Business Requirements
 -- Responsive Design (Mobile, Desktop) <br>
 -- Sign up (Stored in database) <br>
 -- Sign in (Authorization) <br>
