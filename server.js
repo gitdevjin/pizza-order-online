@@ -32,7 +32,16 @@ app.get("/sides", (req, res) => {
 
 app.get("/drink", (req, res) => {
     res.sendFile(path.join(__dirname, '/src/views/drink.html'));
-})
+});
+
+app.get("/signup", (req, res) => {
+    res.sendFile(path.join(__dirname, '/src/views/logins/signUp.html'));
+});
+
+app.get("/signin", (req, res) => {
+    res.sendFile(path.join(__dirname, '/src/views/logins/signIn.html'));
+});
+
 
 mongoose.connection.once('open', () => {
     console.log('connected to MongoDB');

@@ -8,16 +8,16 @@
     <link rel="icon" href="./icon/pizza_icon.png" type="image/x-icon">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/pizza.css">
+    <link rel="stylesheet" href="./css/login.css">
 
     <!-- JavaScript-->
-    <script src="./js/pizza.js" defer></script>
+    <script src="./js/main.js" defer></script>
 </head>
 
 <body>
 
     <header class="header">
-        <div class="cart-icon"><a href="/">🛒</a></div>
+        <div class="cart-icon"><a href="">🛒</a></div>
         <h1 class="title">
             <a href="/">🍕Mega Pizza</a>
         </h1>
@@ -35,7 +35,7 @@
                 <li class="nav__login-item"><a href="/">👤 Sign up</a></li>
             </ul>
             <p class="online-order-btn">
-                <a href="">Order Now 🛒</a>
+                <a href="/">Order Now 🛒</a>
             </p>
             <ul class="nav__menu">
                 <li class="nav__menu-item">
@@ -110,84 +110,45 @@
 
 
     <main class="main">
+        <form class="sign-up-sheet">
+            <section class="sign-up">
+                <div class="sign-up-container">
+                    <div class="sign-up-title">
+                        <h3>Sign Up</h3>
+                    </div>
 
-        <section class="main-nav-container">
-            <ul class="main-nav-list">
-                <li class="main-nav-item"><a href="/pizza">Pizza</a></li>
-                <li class="main-nav-item"><a href="/salad">Salads</a></li>
-                <li class="main-nav-item"><a href="/sides">Sides</a></li>
-                <li class="main-nav-item"><a href="/">Drinks</a></li>
-            </ul>
-            <ul class="recommend-list">
-                <li class="recommend-item"><span>#REC</span></li>
-                <li class="recommend-item">
-                    <img src="./icon/new.gif" alt="">
-                    <a href="/pizza">Shrimp Pizza</a>
-                </li>
-                <li class="recommend-item">
-                    <a href="/salad">Greek Salad</a>
-                </li>
-            </ul>
-        </section>
-        <div class="sub-title">
-            <h1>Just <span class="sub-title-salad">Drinks</span></h1>
-        </div>
-        <form action="https://httpbin.org/post" method="POST">
-            <section class="pizza-menu">
-                <div class="menu-container">
-                    <ul class="pizza-list">
+                    <div class="sign-up-content">
+                        <div class="sign-up-desc">Sign-in Info</div>
+                        <input id="id" type="text" class="user-info" placeholder="megapizza@example.com">
+                        <input id="password" type="password" class="user-info" placeholder="password">
+                    </div>
 
-                        <li class="pizza-item"> <!-- /***** 1 *****/ -->
-                            <img src="./img/coke.jpg" alt="">
-                            <div class="pizza-item-name">Coke Zero</div>
-                            <div class="pizza-size">
-                                <label for="drink1-size"></label>
-                                <input type="radio" name="drink1-size">
-                                <img src="./icon/size-m.png" alt="">
-                                <span>$ 1.99</span>
-                            </div>
-                            <div class="pizza-size">
-                                <label for="drink1-size"></label>
-                                <input type="radio" name="drink1-size">
-                                <img src="./icon/size-l.png" alt="">
-                                <span>$ 2.99</span>
-                            </div>
-                            <div class="pizza-quantity">
-                                <label for="drink1-quantity"></label>
-                                <div class="input-minus">-</div>
-                                <input type="text" name="drink1-quantity" value="0" class="input-quantity">
-                                <div class="input-plus">+</div>
-                            </div>
-                            <input type="submit" class="add-to-cart-btn" value="ADD TO CART">
-                        </li>
-
-                        <li class="pizza-item">
-                            <img src="./img/ginger-ale.jpg" alt="">
-                            <div class="pizza-item-name">Ginger Ale</div>
-                            <div class="pizza-size">
-                                <label for="drink2-size"></label>
-                                <input type="radio" name="drink2-size">
-                                <img src="./icon/size-m.png" alt="">
-                                <span>$ 2.99</span>
-                            </div>
-                            <div class="pizza-size">
-                                <label for="drink2-size"></label>
-                                <input type="radio" name="drink2-size">
-                                <img src="./icon/size-l.png" alt="">
-                                <span>$ 3.99</span>
-                            </div>
-
-                            <div class="pizza-quantity">
-                                <label for="drink2-quantity"></label>
-                                <div class="input-minus">-</div>
-                                <input type="text" name="drink2-quantity" value="0" class="input-quantity">
-                                <div class="input-plus">+</div>
-                            </div>
-                            <input type="submit" class="add-to-cart-btn" value="ADD TO CART">
-                        </li>
-                    </ul>
-
+                    <div class="sign-up-content">
+                        <div class="sign-up-desc">Customer Info</div>
+                        <input type="text" class="user-info" placeholder="first name">
+                        <input type="text" class="user-info" placeholder="last name">
+                        <input type="text" class="user-info" placeholder="street address">
+                        <input type="text" class="user-info" placeholder="city">
+                        <select name="province" class="user-info province">
+                            <option value="select">Province</option>
+                            <option value="AB">Alberta</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="NB">New Brunswick</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="ON">Ontario</option>
+                            <option value="QC">Quebec</option>
+                            <option value="SK">Saskatchewan</option>
+                        </select>
+                    </div>
+                    <div class="already-member">Already a member?
+                        <a href="/signin">sign-in</a>
+                    </div>
+                    <button id="sign-up-btn">Submit</button>
                 </div>
+
+
+
             </section>
         </form>
     </main>
