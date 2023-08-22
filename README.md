@@ -1,9 +1,9 @@
 # pizza-order-online
 
-Business Requirements
+## Business Requirements <br>
 -- Responsive Design (Mobile, Desktop) <br>
--- Sign up (Stored in database)
--- Sign in (Authorization)
--- Add items to Cart (Stored in database)
--- Order items (Stored in database)
--- Manage order history (reports)
+-- Sign up (Stored in database) <br>
+-- Sign in (Authorization) <br>
+-- Add items to Cart (Stored in database) <br>
+-- Order items (Stored in database) <br>
+-- Manage order history (reports) <br>
