@@ -32,7 +32,9 @@ const toggleOverlay = () => {
 }
 
 var swiper = new Swiper(".mySwiper", {
-    rewind: true,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
     pagination: {
         el: ".swiper-pagination",
         clickable: true,

@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="./css/login.css">
 
     <!-- JavaScript-->
-    <script src="./js/main.js" defer></script>
+    <script src="./js/pizza.js" defer></script>
+    <script src="./js/logins/register.js" defer></script>
 </head>
 
-<body>
 
+<body>
     <header class="header">
         <div class="cart-icon"><a href="">🛒</a></div>
         <h1 class="title">
@@ -119,17 +120,17 @@
 
                     <div class="sign-up-content">
                         <div class="sign-up-desc">Sign-in Info</div>
-                        <input id="id" type="text" class="user-info" placeholder="megapizza@example.com">
+                        <input id="email" type="text" class="user-info" placeholder="megapizza@example.com">
                         <input id="password" type="password" class="user-info" placeholder="password">
                     </div>
 
                     <div class="sign-up-content">
                         <div class="sign-up-desc">Customer Info</div>
-                        <input type="text" class="user-info" placeholder="first name">
-                        <input type="text" class="user-info" placeholder="last name">
-                        <input type="text" class="user-info" placeholder="street address">
-                        <input type="text" class="user-info" placeholder="city">
-                        <select name="province" class="user-info province">
+                        <input id="firstName" type="text" class="user-info" placeholder="first name">
+                        <input id="lastName" type="text" class="user-info" placeholder="last name">
+                        <input id="street" type="text" class="user-info" placeholder="street address">
+                        <input id="city" type="text" class="user-info" placeholder="city">
+                        <select id="province" name="province" class="user-info province">
                             <option value="select">Province</option>
                             <option value="AB">Alberta</option>
                             <option value="BC">British Columbia</option>
@@ -146,9 +147,6 @@
                     </div>
                     <button id="sign-up-btn">Submit</button>
                 </div>
-
-
-
             </section>
         </form>
     </main>

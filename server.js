@@ -11,36 +11,13 @@ app.use(express.static(path.join(__dirname, '/src/public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 connectDB();
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "/src/views/main.html"));
-});
+app.use("/", require('./src/routes/root'));
+app.use("/signup", require('./src/routes/signup'));
+app.use("/signin", require('./src/routes/signin'));
 
-app.get("/pizza", (req, res) => {
-    res.sendFile(path.join(__dirname, '/src/views/pizza.html'));
-});
 
-app.get("/salad", (req, res) => {
-    res.sendFile(path.join(__dirname, '/src/views/salad.html'));
-});
-
-app.get("/sides", (req, res) => {
-    res.sendFile(path.join(__dirname, '/src/views/sides.html'));
-});
-
-app.get("/drink", (req, res) => {
-    res.sendFile(path.join(__dirname, '/src/views/drink.html'));
-});
-
-app.get("/signup", (req, res) => {
-    res.sendFile(path.join(__dirname, '/src/views/logins/signUp.html'));
-});
-
-app.get("/signin", (req, res) => {
-    res.sendFile(path.join(__dirname, '/src/views/logins/signIn.html'));
-});
 
 
 mongoose.connection.once('open', () => {

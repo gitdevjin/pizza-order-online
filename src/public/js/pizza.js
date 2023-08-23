@@ -21,10 +21,7 @@ const initApp = () => {
     minusBtn.forEach((button) => {
         button.addEventListener("click", (e) => quantityMinus(e));
     })
-
-
 }
-
 
 const toggleNavBox = () => {
     const navBox = document.querySelector(".nav-box");
