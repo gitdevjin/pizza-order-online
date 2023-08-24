@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const verifyJWT = require("../middleware/verifyJWT");
+const verifyRoles = require("../middleware/verifyRoles");
 
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../views/main.html"))
@@ -18,7 +20,7 @@ router.get("/sides", (req, res) => {
     res.sendFile(path.join(__dirname, '../views/sides.html'));
 });
 
-router.get("/drink", (req, res) => {
+router.get("/drink", verifyJWT, verifyRoles(3333), (req, res) => {
     res.sendFile(path.join(__dirname, '../views/drink.html'));
 });
 

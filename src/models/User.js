@@ -10,26 +10,41 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    firstName: {
-        type: String,
-        required: true
+    userInfo: {
+        firstName: {
+            type: String,
+            required: true
+        },
+        lastName: {
+            type: String,
+            required: true
+        },
+        street: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        province: {
+            type: String,
+            required: true
+        },
     },
-    lastName: {
-        type: String,
-        required: true
+    roles: {
+        User: {
+            type: Number,
+            default: 3333
+        },
+        Editor: {
+            type: Number,
+        },
+        Admin: {
+            type: Number,
+        }
     },
-    street: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    province: {
-        type: String,
-        required: true
-    }
+    refreshToken: String
 });
 
 module.exports = mongoose.model('User', userSchema);

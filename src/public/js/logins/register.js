@@ -11,7 +11,6 @@ const signUpBtn = document.querySelector("#sign-up-btn");
 signUpBtn.addEventListener("click", register);
 
 function register() {
-    console.log("button clicked");
     event.preventDefault();
     if (!email.value) return alert("email must be entered");
     if (!pwd.value) return alert("password must be entered");

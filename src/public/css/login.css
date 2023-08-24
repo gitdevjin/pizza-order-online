@@ -421,7 +421,7 @@ body {
     color: var(--footer-theme-color);
 }
 
-#sign-up-btn {
+.sign-up-btn {
     display: grid;
     place-content: center;
     background-color: var(--main-theme-color);
@@ -437,7 +437,7 @@ body {
     box-shadow: 2px 2px 2px #aa0000;
 }
 
-#sign-up-btn:hover {
+.sign-up-btn:hover {
     transform: translate(2px, 2px);
     background-color: #bb3333;
 }

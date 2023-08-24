@@ -4,7 +4,11 @@ const app = express();
 const path = require("path");
 const mongoose = require('mongoose');
 const connectDB = require('./src/config/dbConn');
+const cookieParser = require('cookie-parser');
+const verifyJWT = require('./src/middleware/verifyJWT');
 const HTTP_PORT = process.env.PORT || 8080;
+
+app.use(cookieParser());
 
 app.set("views", "./src/views");
 app.use(express.static(path.join(__dirname, '/src/public')));
@@ -13,10 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB();
 
-app.use("/", require('./src/routes/root'));
+
 app.use("/signup", require('./src/routes/signup'));
 app.use("/signin", require('./src/routes/signin'));
-
+app.use("/", require('./src/routes/root'));
 
 
 

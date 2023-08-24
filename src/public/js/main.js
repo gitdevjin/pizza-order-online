@@ -12,6 +12,7 @@ const initApp = () => {
     overLay.addEventListener("touchmove", (e) => {
         e.preventDefault();
     }, { passive: false });
+    //loggedInLink();
 }
 
 const toggleNavBox = () => {
@@ -44,3 +45,21 @@ var swiper = new Swiper(".mySwiper", {
         prevEl: ".swiper-button-prev",
     },
 });
+
+const loggedInLink = () => {
+    const allCookies = document.cookie;
+    const signedInLink = document.querySelector("#sign-in-link");
+    console.log(allCookies);
+    const accessTokenMatch = allCookies.match(/accessTokenClient=([^;]*)/);
+    const refreshTokenMatch = allCookies.match(/refreshTokenClient=([^;]*)/);
+
+    const tokens = {
+        accessTokenClient: accessTokenMatch ? accessTokenMatch[1] : null,
+        refreshTokenClient: refreshTokenMatch ? refreshTokenMatch[1] : null
+    };
+
+    if (tokens[1] !== "") {
+        signedInLink.href = "/";
+        signedInLink.textContent = "Sign-out";
+    }
+}

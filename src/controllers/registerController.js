@@ -14,11 +14,13 @@ const createNewUser = async (req, res) => {
         const result = await User.create({
             "emailId": email,
             "password": pwd,
-            "firstName": firstName,
-            "lastName": lastName,
-            "street": street,
-            "city": city,
-            "province": province,
+            "userInfo": {
+                firstName: firstName,
+                lastName: lastName,
+                street: street,
+                city: city,
+                province: province
+            }
         });
         console.log(result);
         res.status(201).json({ 'success': true, 'msg': `Welcome!, ${firstName}` })
