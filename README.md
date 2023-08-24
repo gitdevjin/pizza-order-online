@@ -6,4 +6,4 @@
 -- Sign in (Authorization) <br>
 -- Add items to Cart (Stored in database) <br>
 -- Order items (Stored in database) <br>
--- Manage order history (reports) <br>
+-- Manage order history (Business reports) <br>
