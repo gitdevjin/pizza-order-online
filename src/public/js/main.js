@@ -12,7 +12,17 @@ const initApp = () => {
     overLay.addEventListener("touchmove", (e) => {
         e.preventDefault();
     }, { passive: false });
-    //loggedInLink();
+
+    /*  //not working maybe later
+        document.addEventListener('click', () => {
+        const refreshToken = localStorage.getItem('refreshToken');
+        console.log(refreshToken + "dom");
+        if (refreshToken) {
+            getNewAccessToken(refreshToken);
+        }
+    }); */
+
+    loggedInLink();
 }
 
 const toggleNavBox = () => {
@@ -49,7 +59,6 @@ var swiper = new Swiper(".mySwiper", {
 const loggedInLink = () => {
     const allCookies = document.cookie;
     const signedInLink = document.querySelector("#sign-in-link");
-    console.log(allCookies);
     const accessTokenMatch = allCookies.match(/accessTokenClient=([^;]*)/);
     const refreshTokenMatch = allCookies.match(/refreshTokenClient=([^;]*)/);
 
@@ -57,9 +66,36 @@ const loggedInLink = () => {
         accessTokenClient: accessTokenMatch ? accessTokenMatch[1] : null,
         refreshTokenClient: refreshTokenMatch ? refreshTokenMatch[1] : null
     };
-
-    if (tokens[1] !== "") {
-        signedInLink.href = "/";
-        signedInLink.textContent = "Sign-out";
+    console.log(tokens);
+    if (tokens.accessTokenClient === null) {
+        signedInLink.href = "/signin";
+        signedInLink.textContent = "🔓 Sign in";
+        localStorage.clear();
+    } else {
+        signedInLink.href = "/signout";
+        signedInLink.textContent = "🔒 Sign-out";
     }
 }
+
+
+/* Refresh Token Function. not complete. Later
+async function getNewAccessToken(refreshToken) {
+    if (refreshToken) {
+        try {
+            fetch('/refresh-token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ refreshToken: refreshToken })
+            }).then((res) => res.json())
+                .then(res => {
+                    if (res.success) {
+                        localStorage.setItem('refreshToken', res.refreshToken);
+                    }
+                })
+        } catch (error) {
+            console.error('Error refreshing token:', error);
+        }
+    }
+} */

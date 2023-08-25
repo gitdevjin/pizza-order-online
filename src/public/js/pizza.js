@@ -16,11 +16,14 @@ const initApp = () => {
     const plusBtn = document.querySelectorAll(".input-plus");
     plusBtn.forEach((button) => {
         button.addEventListener("click", (e) => quantityPlus(e));
-    })
+    });
+
     const minusBtn = document.querySelectorAll(".input-minus");
     minusBtn.forEach((button) => {
         button.addEventListener("click", (e) => quantityMinus(e));
-    })
+    });
+
+    loggedInLink();
 }
 
 const toggleNavBox = () => {
@@ -59,4 +62,25 @@ const quantityPlus = (e) => {
     input.value = count;
     var event = new Event('change', { 'bubbles': true });
     input.dispatchEvent(event);
+}
+
+const loggedInLink = () => {
+    const allCookies = document.cookie;
+    const signedInLink = document.querySelector("#sign-in-link");
+    const accessTokenMatch = allCookies.match(/accessTokenClient=([^;]*)/);
+    const refreshTokenMatch = allCookies.match(/refreshTokenClient=([^;]*)/);
+
+    const tokens = {
+        accessTokenClient: accessTokenMatch ? accessTokenMatch[1] : null,
+        refreshTokenClient: refreshTokenMatch ? refreshTokenMatch[1] : null
+    };
+    console.log(tokens);
+    if (tokens.accessTokenClient === null) {
+        signedInLink.href = "/signin";
+        signedInLink.textContent = "🔓 Sign in";
+        localStorage.clear();
+    } else {
+        signedInLink.href = "/signout";
+        signedInLink.textContent = "🔒 Sign-out";
+    }
 }

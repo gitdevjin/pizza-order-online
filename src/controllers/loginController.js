@@ -21,7 +21,7 @@ const handleLogin = async (req, res) => {
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '120s' }
+            { expiresIn: '300s' }
         );
 
         const refreshToken = jwt.sign(
@@ -38,11 +38,11 @@ const handleLogin = async (req, res) => {
             secure: true,
             httpOnly: false,
         });
-        /* 
+
         res.cookie('refreshTokenClient', refreshToken, {
             secure: true,
             httpOnly: false,
-        }); */
+        });
 
         res.status(200).json({ 'success': true, 'refreshToken': refreshToken, 'msg': `Welcome!, ${foundUser.userInfo.firstName}` });
     } else {

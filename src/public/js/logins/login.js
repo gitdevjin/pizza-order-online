@@ -26,8 +26,8 @@ function login() {
     }).then((res) => res.json())
         .then(res => {
             if (res.success) {
-                localStorage.setItem('accessToken', res.accessToken);
-                //location.href = "/";
+                localStorage.setItem('refreshToken', res.refreshToken);
+                location.href = "/";
             } else {
                 alert(res.msg);
             }

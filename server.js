@@ -20,8 +20,9 @@ connectDB();
 
 app.use("/signup", require('./src/routes/signup'));
 app.use("/signin", require('./src/routes/signin'));
+app.use("/signout", require('./src/routes/signout'));
 app.use("/", require('./src/routes/root'));
-
+app.use("/refresh-token", require('./src/routes/refreshToken'));
 
 
 mongoose.connection.once('open', () => {
