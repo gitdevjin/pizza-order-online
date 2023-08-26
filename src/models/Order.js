@@ -12,7 +12,7 @@ const orderSchema = new Schema({
             size: String,
             quantity: Number,
             price: Number,
-        }
+        },
     ],
     sum: Number,
     date: {

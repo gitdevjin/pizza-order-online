@@ -18,7 +18,7 @@
 
     <header class="header">
         <div class="cart-icon">
-            <a href="/">🛒</a>
+            <a href="/cart">🛒</a>
         </div>
         <h1 class="title">
             <a href="/">🍕Mega Pizza</a>
@@ -33,11 +33,11 @@
     <side class="nav-box">
         <div>
             <ul class="nav__login">
-                <li class="nav__login-item"><a href="/" id="sign-in-link">🔓 Sign in</a></li>
-                <li class="nav__login-item"><a href="/">👤 Sign up</a></li>
+                <li class="nav__login-item"><a href="/signin" id="sign-in-link">🔓 Sign in</a></li>
+                <li class="nav__login-item"><a href="/signup">👤 Sign up</a></li>
             </ul>
             <p class="online-order-btn">
-                <a href="/">Order Now 🛒</a>
+                <a href="/cart">Order Now 🛒</a>
             </p>
             <ul class="nav__menu">
                 <li class="nav__menu-item">
@@ -142,11 +142,9 @@
                             <input type="hidden" id="item-id" value="<%= item._id %>">
                             <img src="./img/<%=item.src %>" width="100px" alt="">
                             <div class="item-desc">
-                                <p>
-                                    <span id="item<%= index %>-name">
+                                <p><span id="item<%= index %>-name">
                                         <%= item.itemName %>
-                                    </span>
-                                </p>
+                                    </span></p>
                                 <p>
                                     Size: <span id="item<%= index %>-size">
                                         <%= item.size %>

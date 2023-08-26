@@ -6,12 +6,14 @@ const initApp = () => {
     const navBox = document.querySelector(".nav");
     const overLay = document.querySelector(".overlay");
     const navBoxBtn = document.querySelector(".nav-box-close");
+    const orderBtn = document.querySelector(".order-btn");
     overLay.addEventListener("click", toggleOverlay);
     navBox.addEventListener("click", toggleNavBox);
     navBoxBtn.addEventListener("click", toggleNavBox);
     overLay.addEventListener("touchmove", (e) => {
         e.preventDefault();
     }, { passive: false });
+    orderBtn.addEventListener("click", submitOrder);
 
     const plusBtn = document.querySelectorAll(".input-plus");
     plusBtn.forEach((button) => {
@@ -133,7 +135,6 @@ const calculateSum = () => {
         price = Number(price);
         let qty = document.querySelector(`#item${i}-quantity`);
         qty = qty.value;
-        console.log(qty);
         partialSum[i] = Math.floor((price * qty) * 100) / 100;
         itemSum.textContent = "$ " + partialSum[i];
     }
@@ -143,4 +144,52 @@ const calculateSum = () => {
     totalSum.textContent = "$ " + Math.floor(result * 100) / 100;
 }
 
+const submitOrder = () => {
+    const items = document.querySelectorAll(".cart-item");
+    const totalSum = document.querySelector("#total-sum");
+    let orders = [];
 
+    let result = 0;
+    let partialSum = [];
+    for (let i = 0; i < items.length; i++) {
+        let itemInfo = {};
+        let itemName = document.querySelector(`#item${i}-name`).textContent;
+        let size = document.querySelector(`#item${i}-size`).textContent;
+        let price = document.querySelector(`#item${i}-price`).textContent;
+        const itemSum = document.querySelector(`#item${i}-sum`);
+        price = Number(price);
+        let qty = document.querySelector(`#item${i}-quantity`);
+        qty = qty.value;
+        partialSum[i] = Math.floor((price * qty) * 100) / 100;
+        itemSum.textContent = "$ " + partialSum[i];
+        itemInfo.itemName = itemName.trim();
+        itemInfo.size = size.trim();
+        itemInfo.quantity = Number(qty);
+        itemInfo.price = price;
+        orders.push(itemInfo);
+    }
+    partialSum.forEach((e) => {
+        result += e;
+    })
+    let totalSumValue = Math.floor(result * 100) / 100;
+    totalSum.textContent = "$ " + Math.floor(result * 100) / 100;
+    console.log(orders);
+
+    fetch("/order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "orders": orders, "sum": totalSumValue })
+    }).then((res) => res.json())
+        .then(res => {
+            if (res.success) {
+                alert("Order Submitted!");
+                location.href = "/";
+            } else {
+                alert(res.message);
+            }
+        }).catch(err => {
+            console.error(res.msg);
+        });
+}

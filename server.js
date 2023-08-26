@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB();
 
+app.use("/order", require('./src/routes/order'));
 app.use("/cart", require('./src/routes/cart'));
 app.use("/signup", require('./src/routes/signup'));
 app.use("/signin", require('./src/routes/signin'));
