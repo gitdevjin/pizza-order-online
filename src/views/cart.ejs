@@ -137,23 +137,32 @@
         <section class="cart-section">
             <div class="cart-container">
                 <ul class="cart-list">
-                    <% data.forEach(item=>{ %>
+                    <% data.forEach((item, index)=>{ %>
                         <li class="cart-item">
+                            <input type="hidden" id="item-id" value="<%= item._id %>">
                             <img src="./img/<%=item.src %>" width="100px" alt="">
                             <div class="item-desc">
                                 <p>
-                                    <%= item.itemName %>
+                                    <span id="item<%= index %>-name">
+                                        <%= item.itemName %>
+                                    </span>
                                 </p>
-                                <p>Size: <%= item.size %>
+                                <p>
+                                    Size: <span id="item<%= index %>-size">
+                                        <%= item.size %>
+                                    </span>
                                 </p>
-                                <p>Price: $<%= item.price %>
+                                <p>
+                                    Price: $<span id="item<%= index %>-price">
+                                        <%= item.price %>
+                                    </span>
                                 </p>
-                                <p>Sum: </p>
+                                <p> Sum: <span id="item<%=index%>-sum"></span></p>
                             </div>
                             <div class="item-qty">
                                 <div class="input-plus">+</div>
-                                <input type="text" name="item-quantity" value="<%= item.quantity %>"
-                                    class="input-quantity">
+                                <input type="text" id="item<%= index %>-quantity" name="item-quantity"
+                                    value="<%= item.quantity %>" class="input-quantity">
                                 <div class="input-minus">-</div>
                             </div>
                             <div class="item-delete">
@@ -162,6 +171,7 @@
                         </li>
                         <% }) %>
                 </ul>
+                <p>Total Price: <span id="total-sum"></span></p>
             </div>
             <input type="button" class="order-btn" value="Order">
         </section>

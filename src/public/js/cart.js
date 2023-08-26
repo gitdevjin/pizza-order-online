@@ -24,7 +24,8 @@ const initApp = () => {
     });
 
     loggedInLink();
-    addToCart();
+    deleteItem();
+    calculateSum();
 }
 
 const toggleNavBox = () => {
@@ -53,6 +54,7 @@ const quantityMinus = (e) => {
     input.value = count;
     var event = new Event('change', { 'bubbles': true });
     input.dispatchEvent(event);
+    calculateSum();
 }
 
 const quantityPlus = (e) => {
@@ -63,6 +65,7 @@ const quantityPlus = (e) => {
     input.value = count;
     var event = new Event('change', { 'bubbles': true });
     input.dispatchEvent(event);
+    calculateSum();
 }
 
 const loggedInLink = () => {
@@ -86,49 +89,58 @@ const loggedInLink = () => {
     }
 }
 
-const addToCart = () => {
-    document.querySelectorAll('.add-to-cart-btn').forEach(function (button) {
+const deleteItem = () => {
+    document.querySelectorAll('.delete-btn').forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
 
-            var li = event.target.closest('.pizza-item');
+            var li = event.target.closest('.cart-item');
+            var itemId = li.querySelector('#item-id').value;
+            console.log('id: ' + itemId);
 
-            var itemName = li.querySelector('.pizza-item-name').textContent;
-            console.log('Name:', itemName);
-            var size = li.querySelector('input[name$="-size"]:checked').value;
-            console.log('Size:', typeof size);
-            var quantity = li.querySelector('.input-quantity').value;
-            quantity = Number(quantity);
-            console.log('Quantity:', typeof quantity);
-
-            const request = {
-                itemName: itemName,
-                size: size,
-                quantity: quantity,
-            };
-
-            if (itemName && size && quantity) {
+            if (itemId) {
                 fetch("/cart", {
-                    method: "POST",
+                    method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(request),
+                    body: JSON.stringify({ itemId: itemId }),
                 }).then((res) => res.json())
                     .then(res => {
                         if (res.success) {
-                            alert(`${res.itemName}(${res.size}) Added To Cart`);
+                            console.log(res.msg);
+                            location.href = "/cart";
                         } else {
-                            if (res.location) {
-                                location.href = `/${res.location}`
-                            }
-                            else { alert("Failed to Add items Cart"); }
+                            console.log("Failed to delete items Cart");
                         }
                     });
             } else {
-                if (!size) alert("size must be selected");
-                else if (!quantity) alert("quantity must be greater than 0");
+                console.log("item-id not found");
             }
         });
     });
 }
+
+const calculateSum = () => {
+    const items = document.querySelectorAll(".cart-item");
+    const totalSum = document.querySelector("#total-sum");
+    let result = 0;
+    let partialSum = [];
+    for (let i = 0; i < items.length; i++) {
+        let price = document.querySelector(`#item${i}-price`).textContent;
+
+        const itemSum = document.querySelector(`#item${i}-sum`);
+        price = Number(price);
+        let qty = document.querySelector(`#item${i}-quantity`);
+        qty = qty.value;
+        console.log(qty);
+        partialSum[i] = Math.floor((price * qty) * 100) / 100;
+        itemSum.textContent = "$ " + partialSum[i];
+    }
+    partialSum.forEach((e) => {
+        result += e;
+    })
+    totalSum.textContent = "$ " + Math.floor(result * 100) / 100;
+}
+
+

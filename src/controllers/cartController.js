@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 
 const handleCart = async (req, res) => {
@@ -29,10 +30,7 @@ const displayCart = async (req, res) => {
     const foundUser = await User.findOne({ emailId: user }).exec();
     if (!foundUser) return res.status(403).json({ 'success': false, msg: "user not found" }); //Unauthorized
 
-
-
     const items = foundUser.cart
-
     items.forEach(item => {
         switch (item.itemName) {
             case "Super Deluxe Pizza":
@@ -97,4 +95,18 @@ const displayCart = async (req, res) => {
     });
 }
 
-module.exports = { handleCart, displayCart };
+const deleteCartItem = async (req, res) => {
+    const { user, roles } = req;
+    const { itemId } = req.body;
+
+    console.log(user + " in delete");
+    console.log(itemId + " in delete");
+
+    await User.updateOne(
+        { emailId: user },
+        { $pull: { cart: { _id: new ObjectId(itemId) } } }
+    )
+
+    res.json({ 'success': true, msg: "Item removed from cart" });
+}
+module.exports = { handleCart, displayCart, deleteCartItem };

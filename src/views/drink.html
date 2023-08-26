@@ -17,7 +17,7 @@
 <body>
 
     <header class="header">
-        <div class="cart-icon"><a href="/">🛒</a></div>
+        <div class="cart-icon"><a href="/cart">🛒</a></div>
         <h1 class="title">
             <a href="/">🍕Mega Pizza</a>
         </h1>
@@ -31,11 +31,11 @@
     <side class="nav-box">
         <div>
             <ul class="nav__login">
-                <li class="nav__login-item"><a href="/" id="sign-in-link">🔓 Sign in</a></li>
-                <li class="nav__login-item"><a href="/">👤 Sign up</a></li>
+                <li class="nav__login-item"><a href="/signin" id="sign-in-link">🔓 Sign in</a></li>
+                <li class="nav__login-item"><a href="/signup">👤 Sign up</a></li>
             </ul>
             <p class="online-order-btn">
-                <a href="">Order Now 🛒</a>
+                <a href="/cart">Order Now 🛒</a>
             </p>
             <ul class="nav__menu">
                 <li class="nav__menu-item">
@@ -142,14 +142,14 @@
                             <div class="pizza-item-name">Coke Zero</div>
                             <div class="pizza-size">
                                 <label for="drink1-size"></label>
-                                <input type="radio" name="drink1-size">
-                                <img src="./icon/size-m.png" alt="" value="M">
+                                <input type="radio" name="drink1-size" value="M">
+                                <img src="./icon/size-m.png" alt="">
                                 <span>$ <span id="mPrice">1.99</span></span>
                             </div>
                             <div class="pizza-size">
                                 <label for="drink1-size"></label>
-                                <input type="radio" name="drink1-size">
-                                <img src="./icon/size-l.png" alt="" value="L">
+                                <input type="radio" name="drink1-size" value="L">
+                                <img src="./icon/size-l.png" alt="">
                                 <span>$ <span id="lPrice">2.99</span></span>
                             </div>
                             <div class="pizza-quantity">
@@ -172,8 +172,8 @@
                             </div>
                             <div class="pizza-size">
                                 <label for="drink2-size"></label>
-                                <input type="radio" name="drink2-size">
-                                <img src="./icon/size-l.png" alt="" value="L">
+                                <input type="radio" name="drink2-size" value="L">
+                                <img src="./icon/size-l.png" alt="">
                                 <span>$ <span id="lPrice">3.99</span></span>
                             </div>
 
