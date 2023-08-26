@@ -15,7 +15,6 @@ function login() {
         email: email.value,
         pwd: password.value,
     };
-    console.log(request);
 
     fetch("/signin", {
         method: "POST",

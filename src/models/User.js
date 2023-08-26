@@ -44,6 +44,14 @@ const userSchema = new Schema({
             type: Number,
         }
     },
+    cart: [
+        {
+            itemName: String,
+            size: String,
+            quantity: Number,
+            price: Number,
+        }
+    ],
     refreshToken: String
 });
 

@@ -11,18 +11,20 @@ const HTTP_PORT = process.env.PORT || 8080;
 app.use(cookieParser());
 
 app.set("views", "./src/views");
+app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, '/src/public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 connectDB();
 
-
+app.use("/cart", require('./src/routes/cart'));
 app.use("/signup", require('./src/routes/signup'));
 app.use("/signin", require('./src/routes/signin'));
 app.use("/signout", require('./src/routes/signout'));
 app.use("/", require('./src/routes/root'));
 app.use("/refresh-token", require('./src/routes/refreshToken'));
+
 
 
 mongoose.connection.once('open', () => {

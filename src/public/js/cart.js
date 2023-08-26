@@ -100,22 +100,11 @@ const addToCart = () => {
             var quantity = li.querySelector('.input-quantity').value;
             quantity = Number(quantity);
             console.log('Quantity:', typeof quantity);
-            var price;
-            if (size === "M") {
-                price = li.querySelector('#mPrice').textContent;
-                price = Number(price);
-            }
-            else if (size === "L") {
-                price = li.querySelector('#lPrice').textContent;
-                price = Number(price);
-                console.log(price);
-            }
 
             const request = {
                 itemName: itemName,
                 size: size,
                 quantity: quantity,
-                price: price
             };
 
             if (itemName && size && quantity) {
