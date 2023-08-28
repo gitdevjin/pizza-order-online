@@ -3,7 +3,7 @@ const User = require('../models/User');
 const handleLogout = async (req, res) => {
 
     const cookies = req.cookies;
-    if (!cookies?.refreshTokenClient) return res.sendStatus(204); // No content
+    if (!cookies?.refreshTokenClient) return res.redirect("/"); // No content
     const refreshToken = cookies.refreshTokenClient;
 
 
