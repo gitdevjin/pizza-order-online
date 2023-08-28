@@ -12,6 +12,8 @@ signUpBtn.addEventListener("click", register);
 
 function register() {
     event.preventDefault();
+
+
     if (!email.value) return alert("email must be entered");
     if (!pwd.value) return alert("password must be entered");
     if (!firstName.value) return alert("firstName must be entered");
@@ -19,7 +21,6 @@ function register() {
     if (!street.value) return alert("street must be entered");
     if (!city.value) return alert("city must be entered");
     if (province.value === "select") return alert("province must be selected");
-
     const request = {
         email: email.value,
         pwd: password.value,
