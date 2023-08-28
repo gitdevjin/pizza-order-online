@@ -25,7 +25,7 @@ app.use("/signin", require('./src/routes/signin'));
 app.use("/signout", require('./src/routes/signout'));
 app.use("/", require('./src/routes/root'));
 app.use("/refresh-token", require('./src/routes/refreshToken'));
-
+app.use("/manage", require('./src/routes/manage'));
 
 
 mongoose.connection.once('open', () => {

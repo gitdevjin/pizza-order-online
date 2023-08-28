@@ -568,6 +568,64 @@ body {
     border-bottom-right-radius: 6px;
 }
 
+/** || Table **/
+table {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+table,
+th,
+td {
+    border: 0.5px solid;
+}
+
+.table-user-container {
+    overflow-x: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.table-user-thead {
+    width: 100%;
+}
+
+/** || Receipt **/
+.order-receipt {
+    list-style-type: none;
+    width: 90%;
+    margin: 15px auto;
+    padding: 10px;
+    background-color: var(--side-theme-color);
+    border: 1px solid #3f3f3f;
+    border-radius: 10px;
+}
+
+.order-items {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item-content {
+    padding: 5px;
+}
+
+.item-content-info {
+    padding-left: 30px;
+}
+
+.total-price {
+    color: var(--main-theme-color);
+}
+
+.text-blue {
+    color: #0000df;
+}
 
 /******** || Footer ********/
 

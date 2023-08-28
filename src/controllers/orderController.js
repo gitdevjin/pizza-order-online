@@ -23,4 +23,15 @@ const handleOrder = async (req, res) => {
     }
 }
 
-module.exports = { handleOrder };
+const displayOrder = async (req, res) => {
+    const { user, roles } = req;
+    const foundOrder = await Order.find({}).exec();
+    if (!foundOrder) return res.status(403).json({ 'success': false, msg: " no order found" });
+    console.log(foundOrder);
+
+    res.render('orders', {
+        data: foundOrder,
+    });
+}
+
+module.exports = { handleOrder, displayOrder };

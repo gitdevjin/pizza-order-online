@@ -8,17 +8,18 @@
     <link rel="icon" href="./icon/pizza_icon.png" type="image/x-icon">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/pizza.css">
 
     <!-- JavaScript-->
     <script src="./js/pizza.js" defer></script>
-    <script src="./js/logins/login.js" defer></script>
 </head>
 
 <body>
 
     <header class="header">
-        <div class="cart-icon"><a href="">🛒</a></div>
+        <div class="cart-icon">
+            <a href="/cart">🛒</a>
+        </div>
         <h1 class="title">
             <a href="/">🍕Mega Pizza</a>
         </h1>
@@ -32,11 +33,11 @@
     <side class="nav-box">
         <div>
             <ul class="nav__login">
-                <li class="nav__login-item"><a href="/" id="sign-in-link">🔓 Sign in</a></li>
-                <li class="nav__login-item"><a href="/">👤 Sign up</a></li>
+                <li class="nav__login-item"><a href="/signin" id="sign-in-link">🔓 Sign in</a></li>
+                <li class="nav__login-item"><a href="/signup">👤 Sign up</a></li>
             </ul>
             <p class="online-order-btn">
-                <a href="/">Order Now 🛒</a>
+                <a href="/cart">Order Now 🛒</a>
             </p>
             <ul class="nav__menu">
                 <li class="nav__menu-item">
@@ -92,7 +93,7 @@
                 </a>
             </li>
             <li class="nav__list-item">
-                <a href="/manage">Manage Users</a>
+                <a href="/manage">Manager Users</a>
                 <a href="/manage">
                     <img src="./icon/greater.png" alt="" width="17px" height="17px">
                 </a>
@@ -111,27 +112,47 @@
 
 
     <main class="main">
-        <form class="sign-up-sheet">
-            <section class="sign-up">
-                <div class="sign-up-container">
-                    <div class="sign-up-title">
-                        <h3>Sign In</h3>
-                    </div>
+        <section class="main-nav-container">
+            <ul class="main-nav-list">
+                <li class="main-nav-item"><a href="/manage">Users</a></li>
+                <li class="main-nav-item"><a href="/order">Orders</a></li>
+            </ul>
+        </section>
+        <div class="sub-title">
+            <h1>List of <span class="sub-title-pizza">Orders</span></h1>
+        </div>
 
-                    <div class="sign-up-content">
-                        <input id="email" type="text" class="user-info" placeholder="megapizza@example.com">
-                        <input id="password" type="password" class="user-info" placeholder="password">
-                    </div>
-                    <div class="already-member">New to MegaPizza?
-                        <a href="/signup">sign-up</a>
-                    </div>
-                    <button id="sign-in-btn" class="sign-up-btn">Sign-in</button>
-                </div>
+        <section class="order-section">
+            <% data.forEach((item, index)=>{ %>
+                <ul class="order-receipt">
+                    <li>Order ID: <%= index + 1 %>
+                    </li>
+                    <li>Customer Email : <%= item.emailId %>
+                    </li>
+                    <li>Order Date: <%= item.date %>
+                    </li>
+                    <li><span class="text-blue">Ordered Items:</span>
+                        <ul class="order-items">
+                            <% item.items.forEach((menu, index)=>{ %>
+                                <li class="item-content">
+                                    <p class="item-content-info">
+                                        <%= index + 1 %>. <%= menu.itemName %>(<%= menu.size%>)
+                                    </p>
+                                    <p class="item-content-info">Price: <%= menu.price%>
+                                    </p>
+                                    <p class="item-content-info">Quantity: <%= menu.quantity%>
+                                    </p>
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </li>
+                    <li><span class="total-price">Total Sum: </span>$<%= item.sum %>
+                    </li>
+                </ul>
+                <% }) %>
 
-
-
-            </section>
-        </form>
+                    </table>
+        </section>
     </main>
 
 

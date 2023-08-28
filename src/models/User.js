@@ -37,7 +37,7 @@ const userSchema = new Schema({
             type: Number,
             default: 3333
         },
-        Editor: {
+        Manager: {
             type: Number,
         },
         Admin: {
