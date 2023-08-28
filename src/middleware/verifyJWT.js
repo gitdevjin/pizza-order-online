@@ -6,7 +6,7 @@ const verifyJWT = (req, res, next) => {
         const token = req.cookies.accessTokenClient;
         console.log(token);
         if (!token) {
-            res.status(401).json({ 'success': false, location: "signin" });
+            res.redirect("/signin");
         }
 
         jwt.verify(
