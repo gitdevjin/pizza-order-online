@@ -36,11 +36,13 @@ const handleLogin = async (req, res) => {
 
         res.cookie('accessTokenClient', accessToken, {
             secure: true,
+            sameSite: 'None',
             httpOnly: false,
         });
 
         res.cookie('refreshTokenClient', refreshToken, {
             secure: true,
+            sameSite: 'None',
             httpOnly: false,
         });
 
