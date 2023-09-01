@@ -35,14 +35,13 @@ const handleLogin = async (req, res) => {
         console.log(result);
 
         res.cookie('accessTokenClient', accessToken, {
-            /* secure: true,
-            sameSite: 'None', */
+            secure: true,
             httpOnly: false,
         });
 
         res.cookie('refreshTokenClient', refreshToken, {
-            /* secure: true,
-            sameSite: 'None', */
+            secure: true,
+
             httpOnly: false,
         });
 
