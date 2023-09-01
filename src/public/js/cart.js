@@ -173,7 +173,7 @@ const submitOrder = () => {
     })
     let totalSumValue = Math.floor(result * 100) / 100;
     totalSum.textContent = "$ " + Math.floor(result * 100) / 100;
-    console.log(orders);
+    if (orders.length == 0) return alert("No Item In Cart!");
 
     fetch("/order", {
         method: "POST",

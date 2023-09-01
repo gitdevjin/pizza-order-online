@@ -126,16 +126,16 @@ const addToCart = () => {
                     },
                     body: JSON.stringify(request),
                 }).then((res) => res.json())
-                    .then(res => {
+                    .then((res) => {
                         if (res.success) {
                             alert(`${res.itemName}(${res.size}) Added To Cart`);
                         } else {
                             if (res.location) {
-                                location.href = `/${res.location}`
+                                location.href = `${res.location}`
                             }
                             else { alert("Failed to Add items Cart"); }
                         }
-                    });
+                    }).catch(err => console.log);
             } else {
                 if (!size) alert("size must be selected");
                 else if (!quantity) alert("quantity must be greater than 0");

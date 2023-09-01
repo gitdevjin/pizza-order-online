@@ -7,6 +7,6 @@ const ROLES = require('../config/roles');
 
 router.get("/", verifyJWT, verifyRoles(ROLES.Admin, ROLES.Manager), orderController.displayOrder);
 
-router.post("/", verifyJWT, orderController.handleOrder);
+router.post("/", verifyJWT, verifyRoles(ROLES.User), orderController.handleOrder);
 
 module.exports = router;

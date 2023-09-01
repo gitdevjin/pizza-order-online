@@ -7,7 +7,7 @@ const handleCart = async (req, res) => {
     const { itemName, size, price, quantity } = req.body;
     const { user, roles } = req;
     const foundUser = await User.findOne({ emailId: user }).exec();
-    if (!foundUser) return res.status(403).json({ 'success': false, msg: "user not found" }); //Unauthorized
+    if (!foundUser) return res.status(403).json({ 'success': false, location: "/", msg: "user not found" }); //Unauthorized
 
     const item = {
         itemName: itemName,

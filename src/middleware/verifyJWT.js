@@ -4,23 +4,20 @@ const jwt = require('jsonwebtoken');
 const verifyJWT = (req, res, next) => {
     try {
         const token = req.cookies.accessTokenClient;
-        console.log(token);
-        if (!token) {
+        if (!token && req.method === 'GET') {
             res.redirect("/signin");
+        } else {
+            jwt.verify(
+                token,
+                process.env.ACCESS_TOKEN_SECRET,
+                (err, decoded) => {
+                    req.user = decoded.UserInfo.emailId;
+                    req.roles = decoded.UserInfo.roles;
+                    next();
+                });
         }
-
-        jwt.verify(
-            token,
-            process.env.ACCESS_TOKEN_SECRET,
-            (err, decoded) => {
-                console.log(decoded);
-                if (err) return res.sendStatus(403); //invalid token
-                req.user = decoded.UserInfo.emailId;
-                req.roles = decoded.UserInfo.roles;
-                next();
-            });
     } catch (error) {
-        res.status(500).json(error);
+        next();
     }
 }
 

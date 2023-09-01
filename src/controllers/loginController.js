@@ -41,7 +41,6 @@ const handleLogin = async (req, res) => {
 
         res.cookie('refreshTokenClient', refreshToken, {
             secure: true,
-
             httpOnly: false,
         });
 

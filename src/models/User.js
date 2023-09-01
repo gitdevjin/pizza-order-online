@@ -39,11 +39,9 @@ const userSchema = new Schema({
         },
         Manager: {
             type: Number,
-            default: 2222
         },
         Admin: {
             type: Number,
-            default: 1111
         }
     },
     cart: [

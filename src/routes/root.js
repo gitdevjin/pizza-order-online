@@ -20,7 +20,7 @@ router.get("/sides", (req, res) => {
     res.sendFile(path.join(__dirname, '../views/sides.html'));
 });
 
-router.get("/drink", verifyJWT, verifyRoles(3333), (req, res) => {
+router.get("/drink", (req, res) => {
     res.sendFile(path.join(__dirname, '../views/drink.html'));
 });
 
