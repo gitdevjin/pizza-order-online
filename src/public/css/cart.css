@@ -132,7 +132,7 @@ body {
     top: 0;
     left: -240px;
     width: 240px;
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: var(--side-theme-color);
     transition: all 0.4s ease-in-out;
     z-index: 50;
@@ -611,4 +611,28 @@ footer {
 .footer-info p {
     margin: 2px;
     padding: 2px;
+}
+
+/* -----------------------  DESK TOP  -------------------------- */
+
+@media screen and (min-width: 768px) {
+    body {
+        width: 75vw;
+        max-width: 75%;
+        min-height: 100vh;
+        margin: auto;
+        position: relative;
+    }
+
+    .header {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        height: 70px;
+        border-bottom: solid 1px #333;
+        z-index: 10;
+    }
 }

@@ -110,14 +110,14 @@
     </side>
     <div class="overlay"></div>
 
-
+    <section class="main-nav-container">
+        <ul class="main-nav-list">
+            <li class="main-nav-item"><a href="/manage">Users</a></li>
+            <li class="main-nav-item"><a href="/order">Orders</a></li>
+        </ul>
+    </section>
     <main class="main">
-        <section class="main-nav-container">
-            <ul class="main-nav-list">
-                <li class="main-nav-item"><a href="/manage">Users</a></li>
-                <li class="main-nav-item"><a href="/order">Orders</a></li>
-            </ul>
-        </section>
+
         <div class="sub-title">
             <h1>List of <span class="sub-title-pizza">Users</span></h1>
         </div>
@@ -126,7 +126,7 @@
             <table class="table-user-container">
                 <thead>
                     <tr class="table-user-thead">
-                        <th> index </th>
+                        <th class="column-index"> index </th>
                         <th class="column">email&nbsp;Id</th>
                         <th class="column">Name</th>
                         <th class="column">Roles</th>
@@ -135,7 +135,7 @@
                 <% data.forEach((item, index)=>{ %>
                     <tr>
                         <td>
-                            <%= index %>
+                            <%= index + 1 %>
                         </td>
                         <td>
                             <%= item.emailId %>
@@ -151,7 +151,6 @@
                         </td>
                     </tr>
                     <% }) %>
-
             </table>
         </section>
     </main>

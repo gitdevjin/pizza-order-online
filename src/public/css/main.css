@@ -132,7 +132,7 @@ body {
     top: 0;
     left: -240px;
     width: 240px;
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: var(--side-theme-color);
     transition: all 0.4s ease-in-out;
     z-index: 50;
@@ -340,6 +340,10 @@ body {
 
 
 /******* || Main *******/
+/* || Main-Nav-Bar */
+.main-nav-container {
+    display: none;
+}
 
 /* || Banner */
 .section-banner {
@@ -531,4 +535,206 @@ footer {
 .footer-info p {
     margin: 2px;
     padding: 2px;
+}
+
+/* -----------------------  DESK TOP  -------------------------- */
+
+@media screen and (min-width: 768px) {
+    body {
+        width: 75vw;
+        max-width: 75%;
+        min-height: 100vh;
+        margin: auto;
+        position: relative;
+    }
+
+    /* || Header */
+    .header {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        height: 70px;
+        border-bottom: solid 1px #333;
+        z-index: 10;
+    }
+
+    .nav {
+        margin-left: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 50px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    /******* || Main *******/
+
+    .main {
+        width: 90%;
+        margin: auto;
+    }
+
+    /* || Nav */
+    .main-nav-container {
+        display: block;
+    }
+
+    .main-nav-list {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--main-theme-color);
+    }
+
+    .main-nav-item {
+        list-style-type: none;
+    }
+
+    .main-nav-item a,
+    .main-nav-item a:visited {
+        text-decoration: none;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .recommend-list {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 0.85rem;
+        border-bottom: var(--side-border-A);
+
+    }
+
+    .recommend-item {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .recommend-item span {
+        color: var(--main-theme-color);
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .recommend-item a,
+    .recommend-item a:visited {
+        margin: 5px;
+        text-decoration: none;
+        color: var(--main-text-color);
+        font-size: 0.75rem;
+    }
+
+    /* || Banner */
+    .section-banner {
+        margin-top: 5px;
+    }
+
+    .banner-wrapper {
+        width: 100%;
+        height: 450px;
+        margin: 0px;
+    }
+
+    .main__slide-item {
+        width: 100vw;
+        background-color: #fff;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    /* || Content */
+    .content-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .content-grid {
+        margin-bottom: 10px;
+        width: 100%;
+        height: 30vw;
+        display: grid;
+        grid-template-rows: 33.33% 33.34% 33.33%;
+        grid-template-columns: 33.33% 33.34% 33.33%;
+    }
+
+    .grid-item a {
+        width: 100%;
+        height: 100%;
+        border-bottom: solid 1px #afafaf;
+        border-right: solid 1px #afafaf;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: var(--footer-theme-color);
+    }
+
+    .grid-item a,
+    .grid-item a:visited {
+        text-decoration: none;
+    }
+
+    .grid-item img {
+        margin-bottom: 10px;
+        opacity: 0.7;
+    }
+
+    .content-event {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .event-item a {
+        display: flex;
+        justify-content: center;
+    }
+
+    .event-item a img {
+        width: 100%;
+        min-height: 330px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: solid 1px #c8c8c8;
+        border-radius: 10px;
+    }
+
+    .content-news {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .news-box {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 270px;
+        margin: 0px 0px;
+        padding: 15px;
+        background-color: hsla(37, 100%, 92%, 0.4);
+        color: #5f5f5f;
+        border-radius: 15px;
+    }
 }

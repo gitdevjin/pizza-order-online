@@ -132,7 +132,7 @@ body {
     top: 0;
     left: -240px;
     width: 240px;
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: var(--side-theme-color);
     transition: all 0.4s ease-in-out;
     z-index: 50;
@@ -493,4 +493,134 @@ footer {
 .footer-info p {
     margin: 2px;
     padding: 2px;
+}
+
+@media screen and (min-width: 768px) {
+    /* || Header */
+
+    body {
+        width: 75vw;
+        max-width: 75%;
+        min-height: 100vh;
+        margin: auto;
+        position: relative;
+    }
+
+
+    .header {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        height: 70px;
+        border-bottom: solid 1px #333;
+        z-index: 10;
+    }
+
+
+    /******* || Main *******/
+
+    /* || Sign up*/
+    .sign-up {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sign-up-container {
+        width: 50%;
+        min-height: 400px;
+        margin: 90px 10px 90px 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-color: #ef3f3f8d;
+        border-style: solid;
+    }
+
+    .sign-up-title h3 {
+        margin-top: 10px;
+        font-size: 30px;
+        color: var(--side-text-color);
+    }
+
+    .sign-up-content {
+        width: 100%;
+        margin-top: 15px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-up-desc {
+        width: 100%;
+        font-size: 0.75rem;
+        color: var(--side-text-color);
+    }
+
+    .user-info {
+        width: 90%;
+        height: 60px;
+        padding: 5px;
+        margin: 5px;
+        display: block;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom-color: var(--main-theme-color);
+        opacity: 0.6;
+        box-shadow: 0 5px 6px -6px red;
+    }
+
+    .user-info:focus-visible {
+        outline: none;
+        border-radius: none;
+    }
+
+    .province {
+        border-bottom-width: 2px;
+    }
+
+    .already-member {
+        color: var(--footer-text-color);
+        font-size: 0.75rem;
+    }
+
+    .already-member a,
+    .already-member a:visited {
+        color: var(--footer-text-color);
+        text-decoration: none;
+    }
+
+    .already-member a:visited {
+        color: var(--footer-theme-color);
+    }
+
+    .sign-up-btn {
+        display: grid;
+        place-content: center;
+        background-color: var(--main-theme-color);
+        color: #fff;
+        border: none;
+        width: 125px;
+        height: 35px;
+        padding: 5px;
+        margin: 40px 0px 10px 0px;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        box-shadow: 2px 2px 2px #aa0000;
+    }
+
+    .sign-up-btn:hover {
+        transform: translate(2px, 2px);
+        background-color: #bb3333;
+    }
 }
