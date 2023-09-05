@@ -6,6 +6,9 @@ const initApp = () => {
     const navBox = document.querySelector(".nav");
     const overLay = document.querySelector(".overlay");
     const navBoxBtn = document.querySelector(".nav-box-close");
+    const signedInLink = document.querySelector("#sign-in-link");
+
+    signedInLink.addEventListener("click", logOut);
     overLay.addEventListener("click", toggleOverlay);
     navBox.addEventListener("click", toggleNavBox);
     navBoxBtn.addEventListener("click", toggleNavBox);
@@ -75,14 +78,14 @@ const loggedInLink = () => {
         accessTokenClient: accessTokenMatch ? accessTokenMatch[1] : null,
         refreshTokenClient: refreshTokenMatch ? refreshTokenMatch[1] : null
     };
-    console.log(tokens);
-    if (tokens.accessTokenClient === null) {
+    console.log(localStorage.getItem('refreshToken' + "Hello Local storage"));
+    if (localStorage.getItem('refreshToken') === null) {
         signedInLink.href = "/signin";
         signedInLink.textContent = "🔓 Sign in";
-        localStorage.clear();
     } else {
         signedInLink.href = "/signout";
         signedInLink.textContent = "🔒 Sign-out";
+
     }
 }
 
@@ -142,4 +145,9 @@ const addToCart = () => {
             }
         });
     });
+}
+
+
+const logOut = () => {
+    localStorage.clear();
 }

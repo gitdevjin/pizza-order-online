@@ -25,7 +25,9 @@ function login() {
     }).then((res) => res.json())
         .then(res => {
             if (res.success) {
+                console.log(res.refreshToken);
                 localStorage.setItem('refreshToken', res.refreshToken);
+                const signedInLink = document.querySelector("#sign-in-link");
                 location.href = "/";
             } else {
                 alert(res.msg);

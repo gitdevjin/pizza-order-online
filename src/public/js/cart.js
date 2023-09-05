@@ -7,6 +7,9 @@ const initApp = () => {
     const overLay = document.querySelector(".overlay");
     const navBoxBtn = document.querySelector(".nav-box-close");
     const orderBtn = document.querySelector(".order-btn");
+    const signedInLink = document.querySelector("#sign-in-link");
+
+    signedInLink.addEventListener("click", logOut);
     overLay.addEventListener("click", toggleOverlay);
     navBox.addEventListener("click", toggleNavBox);
     navBoxBtn.addEventListener("click", toggleNavBox);
@@ -81,13 +84,13 @@ const loggedInLink = () => {
         refreshTokenClient: refreshTokenMatch ? refreshTokenMatch[1] : null
     };
     console.log(tokens);
-    if (tokens.accessTokenClient === null) {
+    if (localStorage.getItem('refreshToken') === null) {
         signedInLink.href = "/signin";
         signedInLink.textContent = "🔓 Sign in";
-        localStorage.clear();
     } else {
         signedInLink.href = "/signout";
         signedInLink.textContent = "🔒 Sign-out";
+
     }
 }
 
@@ -192,4 +195,8 @@ const submitOrder = () => {
         }).catch(err => {
             console.error(res.msg);
         });
+}
+
+const logOut = () => {
+    localStorage.clear();
 }
